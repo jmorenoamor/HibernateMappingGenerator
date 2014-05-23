@@ -1,0 +1,21 @@
+Set VERIFY OFF
+
+Set PAGESIZE 0
+Set TRIMSPOOL On
+Set TRIMOUT On
+
+Set LINESIZE 1000
+Set FEED OFF
+Set TERM ON
+Set FLUSH ON
+Set FEEDBACK OFF
+Set HEAD OFF
+
+Spool /tmp/CTLG.txt;
+
+Select C.TABLE_NAME As Tabla, C.COLUMN_NAME As Columna, Substr(C.DATA_TYPE,1,10) As Tipo, C.NULLABLE As Nullable , C.DATA_LENGTH As Length
+From ALL_TAB_COLUMNS C Where TABLE_NAME In (
+  Select T.TABLE_NAME From ALL_ALL_TABLES T Where T.TABLE_NAME Not Like '%$%'
+);
+
+Spool OFF;
