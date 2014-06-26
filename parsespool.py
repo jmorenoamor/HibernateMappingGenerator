@@ -84,7 +84,6 @@ def generate_annotations(lines):
 
                 fw = open('/tmp/{table}.java'.format(table=J_CLASE), 'w')
 
-                fw.write('package com.morenoamor.vodafone.ial;' + '\n')
                 fw.write('' + '\n')
                 fw.write('import javax.persistence.Column;' + '\n')
                 fw.write('import javax.persistence.Entity;' + '\n')
